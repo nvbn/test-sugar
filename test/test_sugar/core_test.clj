@@ -8,8 +8,16 @@
 (deftest test-is=
   (ts/is= 10 (identity 10)))
 
+(defn fake-inc
+  [x]
+  (+ 10 x))
+
+(defn fake-identity
+  [x]
+  [x])
+
 (deftest test-with-provided
-  (ts/with-provided {#'identity inc
-                     #'dec (fn [x] (* x 5))}
-    (ts/is= 11 (identity 10))
-    (ts/is= 15 (dec 3))))
+  (ts/with-provided {#'fake-inc inc
+                     #'fake-identity (fn [x] (* x 5))}
+    (ts/is= 11 (fake-inc 10))
+    (ts/is= 15 (fake-identity 3))))
