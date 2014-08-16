@@ -6,7 +6,7 @@ Usefull sugar for `clojure.test` and `clojurescript.test`.
 
 Add the following dependency to your `project.clj` file:
 
-    [test-sugar "2.0"]
+    [test-sugar "2.1"]
 
 ## Usage
 

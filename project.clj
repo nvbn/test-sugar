@@ -1,4 +1,4 @@
-(defproject test-sugar "2.0"
+(defproject test-sugar "2.1"
   :description "Sugar for clojure.test and clojurescript.test"
   :url "https://github.com/nvbn/test-sugar/"
   :license {:name "Eclipse Public License"
@@ -20,13 +20,14 @@
                                     :output-path "target/generated-cljs"
                                     :rules :cljs}
                                    {:source-paths ["test"]
-                                    :output-path "target/generated-cljs"
+                                    :output-path "target/test-generated-cljs"
                                     :rules :cljs}]}
-                   :cljsbuild {:builds [{:source-paths ["target/generated-cljs"]
+                   :cljsbuild {:builds [{:source-paths ["target/generated-cljs"
+                                                        "target/test-generated-cljs"]
                                          :compiler {:output-to "target/cljs-test.js"
                                                     :optimizations :whitespace
                                                     :pretty-print true}}]
                                :test-commands {"test" ["phantomjs" :runner
                                                        "target/cljs-test.js"]}}
                    :test-paths ["target/test-classes"]}}
-  :source-paths ["target/classes"])
+  :source-paths ["target/classes" "target/generated-cljs"])
