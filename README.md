@@ -1,6 +1,6 @@
 # test-sugar
 
-Usefull sugar for `clojure.test`.
+Usefull sugar for `clojure.test` and `clojurescript.test`.
 
 ## Installation
 
@@ -30,17 +30,6 @@ Add the following dependency to your `project.clj` file:
 (is= 10 10) ; => true
 (is= 9 (inc 8)) ; => true
 (is= 5 6) ; => false
-```
-
-`with-provided` &mdash; sugar for `with-redefs-fn`:
-
-```clojure
-(require '(test-sugar.core :refer [is= is-do with-provided]))
-
-(with-provided {#'a/chan (fn [] nil)
-                #'k/select identity}
-    (is-do nil? (a/chan))
-    (is= 10 (k/select 10))) ; => true
 ```
 
 ## License
